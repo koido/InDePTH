@@ -3,7 +3,8 @@ cscore_LINCS <- function( up.sig,
                           dn.sig,
                           input.dir = "init",
                           output.dir = "output",
-                          write.name = NULL ){
+                          write.name = NULL,
+                          gene.symbol = FALSE){
 
   #----- Reference
   cat("=====")
@@ -167,6 +168,22 @@ cscore_LINCS <- function( up.sig,
 
   # get probe ids
   PROBE.ID.L1000_sig978 <- rownames(rank.matrix.z)
+  
+  # gene symbol2probe id
+  if(gene.symbol == TRUE){
+      require( "hgu133plus2.db" )
+      # Get the probe identifiers that are mapped to a gene symbol, hgu133
+      mapped_probes <- mappedkeys( hgu133plus2SYMBOL )
+      # Convert to a data.frame
+      hgu133plus2SYMBOL.data <- as.data.frame(hgu133plus2SYMBOL[mapped_probes])
+      
+      # Limit: qc'd probe set (please see MATERIALS AND METHODS in InDePTH paper)
+      hgu133plus2SYMBOL.data <- hgu133plus2SYMBOL.data %>% dplyr::filter(probe_id %in% qcd_probe)
+
+      # update
+      up.sig <- hgu133plus2SYMBOL.data %>% dplyr::filter(symbol %in% up.sig) %>% dplyr::select(probe_id) %>% unlist %>% as.vector 
+      dn.sig <- hgu133plus2SYMBOL.data %>% dplyr::filter(symbol %in% dn.sig) %>% dplyr::select(probe_id) %>% unlist %>% as.vector 
+  }
 
   # Limit probe ids for landmark genes
   up.sig.L1000_sig978 <- up.sig[up.sig %in% PROBE.ID.L1000_sig978]

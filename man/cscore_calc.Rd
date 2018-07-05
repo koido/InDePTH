@@ -12,10 +12,10 @@ cscore_LINCS(up.sig, dn.sig, input.dir, output.dir, write.name = NULL)
 }
 \arguments{
   \item{up.sig}{
-  character vector of up sigunature of gene sets (Probe ID of Human Genome U133 Plus 2.0 Array is acceptable).
+  character vector of up sigunature of gene sets (Probe ID of Human Genome U133 Plus 2.0 Array is acceptable; if the arg 'gene.symbol' is set to TRUE, official gene symbol is also acceptable.).
 }
   \item{dn.sig}{
-  character vector of down sigunature of gene sets (Probe ID of Human Genome U133 Plus 2.0 Array is acceptable).
+  character vector of down sigunature of gene sets (Probe ID of Human Genome U133 Plus 2.0 Array is acceptable; if the arg 'gene.symbol' is set to TRUE, official gene symbol is also acceptable.).
 }
   \item{input.dir}{
   a character string naming a directory containing the result of init function.
@@ -26,15 +26,20 @@ cscore_LINCS(up.sig, dn.sig, input.dir, output.dir, write.name = NULL)
   \item{write.name}{
   a character string naming a file to write cscore results.
 }
+  \item{gene.symbol}{
+  a boolean selecting whether "up.sig" and "dn.sig" are gene symbols or NOT.
+  If TRUE, gene symbols are replaced to the probe id in the chip, because the rank matrix was made from probe level data (please see MATERIALS AND METHODS in our manuscript.).
+  
+}
 }
 \details{
 }
 \value{
 }
 \references{
-  M. Koido, et al., 'Detection of hub genes for developing gene expression networks under anticancer drug treatment', under review.
+  M. Koido, et al., 'Detection of hub genes for developing gene expression networks under anticancer drug treatment', Oncotarget, 9(49), 29097-29111, 2018.
 
-  Ushijima, Masaru, et al. 'Development of a gene expression database and related analysis programs for evaluation of anticancer compounds.' Cancer science 104.3 (2013): 360-368.
+  M. Ushijima, et al. 'Development of a gene expression database and related analysis programs for evaluation of anticancer compounds.' Cancer science 104(3), 360-368, 2013.
 
   http://www.lincsproject.org/}
 \author{

@@ -32,7 +32,7 @@ make_threshold(pert_id_vec, cscore, cell, input.dir, output.dir)
 \value{
 }
 \references{
-  M. Koido, et al., 'Detection of hub genes for developing gene expression networks under anticancer drug treatment', under review.
+  M. Koido, et al., 'Detection of hub genes for developing gene expression networks under anticancer drug treatment', Oncotarget, 9(49), 29097-29111, 2018.
 
   http://www.lincsproject.org/}
 \author{

@@ -1,12 +1,12 @@
 Package: InDePTH
 Type: Package
 Title: influential gene detection in perturbed transcriptome hierarchical network
-Version: 1.01
+Version: 1.02
 Author: Masaru Koido
 Maintainer: Masaru Koido <masaru.koido@jfcr.or.jp>
 Description: This package provide InDePTH algorithm.
 Depends: R (>= 3.1.3)
-Imports: dplyr, readr, rhdf5, xlsx, igraph, NetPathMiner, compiler, pROC
+Imports: dplyr, readr, rhdf5, xlsx, igraph, NetPathMiner, compiler, pROC, hgu133plus2.db
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
